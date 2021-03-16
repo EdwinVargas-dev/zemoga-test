@@ -35,7 +35,6 @@ export class LoginSignupComponent implements OnInit {
   login(credentials: any) {
     this.errorLogin = ''
     this.auth.signInWithEmailAndPassword(credentials.email, credentials.password).then(result => {
-      console.log(result)
       localStorage.setItem('email', btoa(credentials.email))
       this.router.navigate([''])
     }).catch(error => {
@@ -45,12 +44,9 @@ export class LoginSignupComponent implements OnInit {
 
   signUp(dataToAccount: any) {
     this.errorSignUp = ''
-    console.log(dataToAccount)
     this.auth.createUserWithEmailAndPassword(dataToAccount.email, dataToAccount.password).then(result => {
-      console.log(result)
       delete dataToAccount.password
       this.db.collection('users').doc(dataToAccount.email).set(dataToAccount).then(resultUser => {
-        console.log(resultUser)
         this.formSignUp.reset()
         this.validateSignUp = false
       })
