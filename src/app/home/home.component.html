@@ -1,0 +1,156 @@
+<header class="site-header sticky-top py-1">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-togglable fixed-top pt-4">
+    <div class="container-fluid px-5">
+      <a class="navbar-brand text-white" href="#"><h3>Rule of Thumb.</h3></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+    <div class="container">
+      <div class="collapse navbar-collapse container" id="navbarTogglerDemo01">
+        <div class="d-flex justify-content-end w-100">
+          <ul class="navbar-nav mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link fw-light ms-3 me-3 text-white" aria-current="page" href="#">Past Trials</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-light ms-3 me-3 text-white" href="#">How It Works</a>
+            </li>
+            <li *ngIf="!currentUserData" class="nav-item">
+              <a class="nav-link fw-light ms-3 me-3 text-white" [routerLink]="['/login']">Log In / Sign Up</a>
+            </li>
+            <li *ngIf="currentUserData" class="nav-item">
+              <a class="nav-link fw-light ms-3 me-3 text-white" (click)="logout()">Logout</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-light ms-3 me-3 text-white" href="#"><i class="fas fa-search fa-2x"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<section class="section-full">
+  <div class="position-relative overflow-hidden p-3 p-lg-5 p-md-2 p-sm-1 m-md-3 text-center">
+    <div class="col-lg-5 col-md-6 ml-auto my-5 bg-blur-black text-white text-start">
+      <div class="pb-4 p-5">
+        <div *ngIf="currentUserData">
+          <h1 class="fw-normal display-5">Hi {{currentUserData.userName}},</h1>
+        </div>
+        <small class="fw-light">What's your opinion on</small>
+        <h1 class="fw-normal display-5">Pope Francis?</h1>
+        <p class="fw-light lead">He’s talking tough on clergy sexual abuse, but is he just another papal pervert protector? (thumbs down) or a true pedophile punishing pontiff? (thumbs up) .</p>
+        <a class="fw-light text-white small" href="#"><i class="fab fa-wikipedia-w"></i> More information</a>
+        <h4 class="fw-bold mt-4">What's Your Verdict?</h4>
+      </div>
+      <div class="position-absolute w-100 d-flex">
+        <a class="btn btn-primary cristal-green w-100" href="#"><i class="fas fa-thumbs-up fa-2x"></i></a>
+        <a class="btn btn-primary cristal-yellow w-100" href="#"><i class="fas fa-thumbs-down fa-flip-horizontal fa-2x"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-container mt-lg-2 mt-md-5">
+    <div class="p-3 grid-item item1 text-end text-white">CLOSING IN</div>
+    <div class="p-3 grid-item item2 h3 mb-0"><strong>22</strong> days</div>
+  </div>
+</section>
+
+<main>
+  <div class="container">
+    <div class="d-md-flex flex-md-equal w-100 my-4">
+      <div class="bg-light w-100 text-center overflow-hidden">
+        <div class="my-3 py-3">
+          <div class="row g-0">
+            <div class="col-lg-3 col-md-11">
+              <h4 class="fw-light mb-0">Speak out. Be heard.</h4>
+              <h1 class="fw-bold mb-0">Be counted</h1>
+            </div>
+            <div class="col-lg-8 col-md-10 px-3">
+              <p class="fw-light">Rule of Thumb is a crowd sourced court of public opinion where anyone and everyone can speak out and speak freely. It’s easy: You share your opinion, we analyze and put the data in a public report.</p>
+            </div>
+            <div class="col-lg-1 col-md-2">
+              <button type="button" class="btn-close" aria-label="Close"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-md-flex w-100 text-start my-md-2 ps-md-3">
+      <h1 class="fw-light">Votes</h1>
+    </div>
+
+
+    <div class="grid-container-cards g-0 my-4">
+      <div *ngFor="let item of votes" [ngStyle]="{'background-image': 'url('+item.image+')'}" class="photo-base mb-3 text-left text-white overflow-hidden">
+        <div class="person-card fw-light">
+          <div class="row ms-0 me-0 px-xs-3">
+            <div class="col-lg-1 col-md-2 g-0 pt-2 my-xs-1">
+              <span *ngIf="item.goodPerc > item.badPerc" class="fs-5 icon-status-good"><i class="fas fa-thumbs-up"></i></span>
+              <span *ngIf="item.goodPerc == item.badPerc" class="fs-5 icon-status-neutral"><i class="fas fa-handshake"></i></span>
+              <span *ngIf="item.goodPerc < item.badPerc" class="fs-5 icon-status-bad"><i class="fas fa-thumbs-down"></i></span>
+            </div>
+            <div class="col-lg-11 col-md-10 g-0">
+              <h1 class="mb-0"> {{item.name}}</h1>
+              <small><strong>1 month ago</strong> in {{item.category}}</small>
+              <p *ngIf="!item.validVote" class="fs-6 mt-3">Vestibulum diam ante, porttitor a odio eget, rhoncus neque. Aenean eu velit libero.</p>
+              <p *ngIf="item.validVote">Thank you for voting!</p>
+
+              <div *ngIf="!currentUserData">
+                <strong class="text-white">You need to login for voting.</strong>
+              </div>
+              <div *ngIf="currentUserData">
+                <form *ngIf="!item.validVote" [formGroup]="form" (ngSubmit)="addVote(item, form.value[item.keyForm])" novalidate>
+                  <input type="radio" class="radio_item" [value]="1" [formControlName]="item.keyForm" [name]="item.keyForm" [id]="'radioGood'+item.key">
+                  <label class="label_item good-vote me-2" [for]="'radioGood'+item.key"> <i class="fas fa-thumbs-up"></i> </label>
+                  <input type="radio" class="radio_item" [value]="-1" [formControlName]="item.keyForm" [name]="item.keyForm" [id]="'radioBad'+item.key">
+                  <label class="label_item bad-vote ms-2 me-2" [for]="'radioBad'+item.key"> <i class="fas fa-thumbs-down fa-flip-horizontal"></i> </label>
+                  <button type="submit" class="btn btn-outline ms-3 me-3" [disabled]="form.value[item.keyForm] ===0">Vote now</button>
+                </form>
+                <button *ngIf="item.validVote" class="btn btn-outline" (click)="item.validVote = !item.validVote">Vote again</button>
+              </div>
+            </div>
+          </div>
+            <div class="progress mt-4">
+              <div class="progress-bar cristal-green pe-2 ps-2 text-start" role="progressbar" [ngStyle]="{'width': item.goodPerc + '%'}" aria-valuemin="0" aria-valuemax="100"><h2 class="mb-0 fw-light"><i class="fas fa-thumbs-up"></i> {{item.goodPerc}}%</h2></div>
+              <div class="progress-bar cristal-yellow pe-2 ps-2 text-end" role="progressbar" [ngStyle]="{'width': item.badPerc + '%'}" aria-valuemin="0" aria-valuemax="100"><h2 class="mb-0 fw-light"><i class="fas fa-thumbs-down fa-flip-horizontal"></i> {{item.badPerc}}%</h2></div>
+            </div>
+          </div>
+      </div>
+    </div>
+
+    <div class="d-md-flex flex-md-equal w-100 my-md-3">
+      <div class="w-100 text-center overflow-hidden section-add-candidate">
+        <div class="container-add-candidate">
+          <div class="row">
+            <div class="col-md-8 text-start text-xs-center my-xs-1">
+              <h2 class="fw-light mb-0">Is there anyone else you would want us to add?</h2>
+            </div>
+            <div class="col-md-4 text-end text-xs-center my-xs-1">
+              <button class="btn btn-outline-strong ms-3 me-3 ">Submit a name</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <div class="ms-3 divider-end mt-5"></div>
+  </div>
+</main>
+
+<footer class="container py-5">
+  <div class="row">
+    <div class="col-md-8 text-start text-xs-center d-xxs-grid mb-3">
+      <small class="ms-3 me-3">Terms and Conditions</small>
+      <small class="ms-3 me-3">Privacy Policy</small>
+      <small class="ms-3 me-3">Contact Us</small>
+    </div>
+    <div class="col-md-4 text-end text-xs-center">
+      <small class="ms-3 me-3 d-xxs-none">Follow Us</small>
+      <i class="fab fa-facebook-square fa-2x ms-2 me-2"></i>
+      <i class="fab fa-twitter fa-2x ms-2 me-2"></i>
+    </div>
+  </div>
+</footer>

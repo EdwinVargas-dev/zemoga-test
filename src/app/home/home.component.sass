@@ -1,0 +1,224 @@
+$good-color: #1cbbb4
+$bad-color: #ffad1d
+$gray-color: #ebebeb
+$white-color: #fff
+
+.section-full
+  margin-top: -10%
+  background-image: url(../../assets/images/francis-pope.png)
+  background-size: cover
+  background-position: center
+  min-height: 600px
+
+.site-header
+  min-height: 110px
+  background: linear-gradient(180deg, rgba(0,0,0,0.59) 0%, rgba(0,0,0,0.42) 35%, rgba(0,212,255,0) 100%)
+
+.bg-dark
+  background: linear-gradient(180deg, rgba(0,0,0,0.59) 0%, rgba(0,0,0,0.42) 35%, rgba(0,212,255,0) 100%)
+  background-color: transparent !important
+
+.bg-blur-black
+  backdrop-filter: blur(30px)
+  background-color: rgba(0,0,0,0.2)
+
+.p-md-5
+  padding: 4rem !important
+
+.btn-primary
+  color: $white-color
+  background-color: transparent
+  border-color: transparent
+  border-radius: 0
+  min-height: 4em
+  padding: 15px
+
+.btn-outline
+  color: $white-color
+  background-color: transparent
+  border: 1px solid white
+  border-radius: 0
+  padding: 10px 15px
+
+.btn-outline-strong
+  color: black
+  font-size: 18px
+  font-weight: bold
+  background-color: transparent
+  border: 2px solid black
+  border-radius: 0
+  padding: 10px 15px
+
+.cristal-green
+  background-color: rgba(28,187,180,0.8)
+
+.cristal-yellow
+  background-color: rgba(255,173,29,0.8)
+
+.photo-base
+  background-size: cover
+  background-position: center
+  background-repeat: no-repeat
+
+.kanye-photo
+  background-image: url(../../assets/images/kanye-west.png)
+
+.mark-photo
+  background-image: url(../../assets/images/mark-zuckerberg.png)
+
+.cristina-photo
+  background-image: url(../../assets/images/cristina.png)
+
+.malala-photo
+  background-image: url(../../assets/images/malala.png)
+
+.person-card
+  background: linear-gradient(360deg, rgba(0,0,0,0.59) 0%, rgba(0,0,0,0.3) 35%, rgba(0,212,255,0) 100%)
+  height: 600px
+  display: table-cell
+  vertical-align: bottom
+  width: 90vw
+
+.icon-status-good
+  padding: 5px 10px
+  background-color: $good-color
+
+.icon-status-bad
+  padding: 5px 10px
+  background-color: $bad-color
+
+.icon-status-neutral
+  padding: 5px 10px
+  background-color: $gray-color
+  color: black
+
+.radio_item
+  display: none !important
+
+.label_item
+  border: none
+
+.radio_item:checked + label
+  border: 2px solid white
+
+label
+  cursor: pointer
+
+.good-vote
+  padding: 5px 10px
+  background-color: $good-color
+  border: 2px solid transparent
+
+.bad-vote
+  padding: 5px 10px
+  background-color: $bad-color
+  border: 2px solid transparent
+
+.progress
+  display: flex
+  height: 3.5rem
+  overflow: hidden
+  font-size: .75rem
+  background-color: transparent
+  border-radius: 0
+
+.section-add-candidate
+  background-image: url(../../assets/images/bg-footer.png)
+  background-position-y: -63em
+  background-size: cover
+
+.container-add-candidate
+  background-color: rgba(255,255,255,0.8)
+  padding: 15px
+
+.divider-end
+  border-bottom: 1px dotted $gray-color
+
+.bg-light
+  background-color: $gray-color !important
+
+.grid-container
+  display: grid
+  grid-gap: 1px
+
+.grid-item
+  background-color: rgba(255, 255, 255, 0.8)
+
+.item1
+  grid-column: 1 / span 1
+  background-color: rgba(0,0,0,0.1)
+
+.item2
+  grid-column: 2 / span 4
+  background-color: rgba(255,255,255,0.3)
+
+.grid-container-cards
+  display: grid
+  grid-template-columns: auto auto
+  grid-gap: 15px
+
+.navbar-nav
+  margin: 0 auto
+  text-align: center
+
+.my-5
+    margin-top: 6em !important
+    margin-bottom: 6em !important
+
+@media screen and (min-width: 300px) and (max-width: 767px)
+  .person-card
+    width: 95vw
+
+  .section-full
+    margin-top: -31%
+
+  .my-xs-1
+    margin-top: .5em !important
+    margin-bottom: .5em !important
+
+  .px-xs-3
+    padding-left: 1.5em !important
+    padding-right: 1.5em !important
+
+  .photo-base
+    background-position: right
+
+  .text-xs-center
+    text-align: center !important
+
+  .d-xxs-grid
+    display: grid
+
+  .d-xxs-none
+    display: none
+
+  .grid-container-cards
+    grid-template-columns: auto
+    grid-gap: 15px
+
+@media screen and (min-width: 768px) and (max-width: 991px)
+
+  .section-full
+    margin-top: -17%
+
+  .navbar-dark .navbar-toggler
+    border-color: rgba(255,255,255,0)
+
+  .navbar-toggler
+    background-color: transparent
+    border: 0px solid transparent
+    border-radius: 0
+
+  .photo-base
+    background-position: right
+
+  .h1, h1
+    font-size: calc(1.375rem + 1vw)
+
+@media only screen and (min-width: 992px)
+  .section-full
+    margin-top: -13%
+
+@media only screen and (min-width: 1200px)
+  .section-full
+    margin-top: -10%

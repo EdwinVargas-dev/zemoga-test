@@ -1,0 +1,117 @@
+<header class="site-header sticky-top py-1">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-togglable fixed-top pt-4">
+    <div class="container-fluid px-5">
+      <a class="navbar-brand text-white" href="#"><h3>Rule of Thumb.</h3></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+    <div class="container">
+      <div class="collapse navbar-collapse container" id="navbarTogglerDemo01">
+        <div class="d-flex justify-content-end w-100">
+          <ul class="navbar-nav mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link fw-light ms-3 me-3 text-white" aria-current="page" href="#">Past Trials</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-light ms-3 me-3 text-white" href="#">How It Works</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-light ms-3 me-3 text-white" [routerLink]="['/login']">Log In / Sign Up</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-light ms-3 me-3 text-white" href="#"><i class="fas fa-search fa-2x"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<section class="section-full">
+  <div class="position-relative overflow-hidden p-3 p-lg-5 p-md-2 p-sm-1 m-md-3 text-center">
+    <div class="col-lg-5 col-md-6 ml-auto my-5 bg-blur-black text-white text-start">
+      <div *ngIf="!validateSignUp" class="pb-4 p-5">
+        <h1 class="fw-normal display-5">Welcome</h1>
+        <p class="fw-light lead">Please login to continue for voting.</p>
+
+        <form class="mt-4" [formGroup]="formLogin" (ngSubmit)="login(formLogin.value)">
+          <div class="form-group my-2">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" formControlName="email" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+          </div>
+          <div class="form-group my-2">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" formControlName="password" name="password" id="exampleInputPassword1" placeholder="Password">
+          </div>
+          <div class="text-center" *ngIf="errorLogin!=''">
+            <small class="text-danger">{{errorLogin}}</small>
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-outline mt-4 px-5" [disabled]="formLogin.invalid">Sign in</button>
+          </div>
+          <div class="text-center my-3">
+            <a class="nav-link text-white" (click)="validateSignUp = !validateSignUp">I am not registered, I would like to.</a>
+          </div>
+        </form>
+      </div>
+
+      <div *ngIf="validateSignUp" class="pb-4 p-5">
+        <h1 class="fw-normal display-5">Welcome</h1>
+        <p class="fw-light lead">Here you can create a new account.</p>
+
+        <form class="mt-4" [formGroup]="formSignUp" (ngSubmit)="signUp(formSignUp.value)">
+          <div class="form-group my-2">
+            <label for="userName">Name</label>
+            <input type="text" class="form-control" formControlName="userName" name="userName" id="userName" aria-describedby="" placeholder="Enter name">
+          </div>
+          <div class="form-group my-2">
+            <label for="age">Age</label>
+            <input type="text" class="form-control" formControlName="age" name="age" id="age" aria-describedby="" placeholder="Enter age">
+          </div>
+          <div class="form-group my-2">
+            <label for="marriageStatus">Marriage Status</label>
+            <select class="form-control" formControlName="marriageStatus" name="marriageStatus" id="marriageStatus" placeholder="Select status">
+              <option value="Single" selected>Single</option>
+              <option value="Free Union">Free Union</option>
+              <option value="Marriage">Marriage</option>
+              <option value="Divorced">Divorced</option>
+            </select>
+          </div>
+          <div class="form-group my-2">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" formControlName="email" name="email" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+          </div>
+          <div class="form-group my-2">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" formControlName="password" name="password" id="password" placeholder="Password">
+          </div>
+          <div class="text-center" *ngIf="errorSignUp!=''">
+            <small class="text-danger">{{errorSignUp}}</small>
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-outline mt-4 px-5" [disabled]="formSignUp.invalid">Create account</button>
+          </div>
+          <div class="text-center my-3">
+            <a class="nav-link text-white" (click)="validateSignUp = !validateSignUp">I am registered, I would like sign in.</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<footer class="container py-5">
+  <div class="row">
+    <div class="col-md-8 text-start text-xs-center d-xxs-grid mb-3">
+      <small class="ms-3 me-3">Terms and Conditions</small>
+      <small class="ms-3 me-3">Privacy Policy</small>
+      <small class="ms-3 me-3">Contact Us</small>
+    </div>
+    <div class="col-md-4 text-end text-xs-center">
+      <small class="ms-3 me-3 d-xxs-none">Follow Us</small>
+      <i class="fab fa-facebook-square fa-2x ms-2 me-2"></i>
+      <i class="fab fa-twitter fa-2x ms-2 me-2"></i>
+    </div>
+  </div>
+</footer>
